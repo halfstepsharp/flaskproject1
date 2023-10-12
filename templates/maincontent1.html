@@ -13,62 +13,118 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script type="module" src="{{ url_for('static', filename='acquisitions.js') }}"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->
+    <script type="module" src="{{ url_for('static', filename='graphs.js') }}"></script>
     <script type="module" src="{{ url_for('static', filename='JavaScript.js') }}"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand">DT-80 Distance & Signal graph 30Hz</a>
+            <span id="timestamp">Elapsed duration: 00:00:00</span>
         </div>
     </nav>
-    <div class="container-xl flex-grow-1 d-flex flex-column justify-content-around" id="mainContainer">
-        <div class="row flex-fill g-0">
-            <div class="col-3 d-flex">
-                <div class="coloredbox graph flex-fill border">Table</div>
-            </div>
-            <div class="col-9 d-flex flex-column">
-                <!-- <div class="row-12 coloredbox graph flex-fill border" id="DistanceGraph">Distance Graph</div> -->
-                <div class="row-12 flex-fill" id="DistanceGraph">
-                    <canvas id="DistanceGraphCanvas">
+    <div class="container-xxl flex-grow-1 d-flex flex-column justify-content-around" id="mainContainer">
+        <div class="row flex-fill d-flex g-0">
+            <div class="col-lg-3 d-flex order-3 order-lg-1 border border-1 border-black">
+                <div class="flex-fill border align-content-center align-items-center d-flex flex-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Dist.</th>
+                                <th scope="col">Signal.</th>
+                                <th scope="col">Temp.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Avg.</th>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Std. dev.</th>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Max</th>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Min</th>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="row-12 coloredbox graph flex-fill border" id="SignalGraph">Signal Graph</div>
             </div>
-        </div>
-        <div class="row gx-2 d-flex m-0">
-            <div class="col-3 flex-fill h-100 p-0">
-                <div class="row m-0 p-0">
-                    <div class="col-6 p-1">
+            <div class="col-lg-9 d-flex flex-column order-1 order-lg-2">
+                <div class="row-12 flex-fill justify-content-around border border-1 border-black">
+                    <div class="dist_signal_chart_container justify-content-around">
+                        <canvas id="DistanceGraphCanvas">
+                    </div>
+                </div>
+                <div class="row-12 flex-fill justify-content-around border border-1 border-black">
+                    <div class="dist_signal_chart_container justify-content-around">
+                        <canvas id="SignalGraphCanvas">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 flex-fill h-100 p-0 order-lg-3 order-4">
+                <div class="row d-flex m-0 p-0 border border-1 border-black ">
+                    <div class="col-lg-6 col-md-2 col-4 p-1">
                         <div type="button" class="btn btn-primary w-100">Pause</div>
                     </div>
-                    <div class="col-6 p-1">
+                    <div class="col-lg-6 col-md-2 col-4 p-1">
                         <div type="button" class="btn btn-primary w-100">Play</div>
                     </div>
-                    <div class="col-6 p-1">
+                    <div class="col-lg-6 col-md-2 col-4 p-1">
                         <div type="button" class="btn btn-primary w-100">Reset</div>
                     </div>
-                    <div class="col-6 p-1">
+                    <div class="col-lg-6 col-md-2 col-4 p-1">
                         <div type="button" class="btn btn-primary w-100">Exit</div>
                     </div>
-                    <div class="col-6 p-1">
+                    <div class="col-lg-6 col-md-2 col-4 p-1">
                         <div type="button" class="btn btn-primary w-100">Range</div>
                     </div>
-                    <div class="col-6 p-1">
-                        <div type="button" class="btn btn-primary w-100">Detail level</div>
+                    <div class="col-lg-6 col-md-2 col-4 p-1">
+                        <div type="button" class="btn btn-primary w-100">Detail lv.</div>
                     </div>
                     <div class="col-12 p-1">
                         <div type="button" class="btn btn-primary w-100">Hide extended graphs</div>
                     </div>
                 </div>
             </div>
-            <div class="col-9 d-flex p-0">
-                <div class="col-4 coloredbox border flex-fill">Q1 graph</div>
-                <div class="col-4 coloredbox border flex-fill">Q2 graph</div>
-                <div class="col-2 coloredbox border flex-fill">Temp graph</div>
+            <div class="col-lg-9 p-0 order-lg-4 order-2">
+                <div class="row m-0 w-100 d-flex">
+                    <div class="col-lg-4 col-6 p-0 d-flex">
+                        <div class="q_temp_chart_container border border-1 border-black flex-fill">
+                            <canvas id="Q1Canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-6 p-0 d-flex">
+                        <div class="q_temp_chart_container border border-1 border-black flex-fill">
+                            <canvas id="Q2Canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12 p-0 d-flex flex-fill">
+                        <div class="q_temp_chart_container border border-1 border-black flex-fill">
+                            <canvas id="TempCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </body>

@@ -1,12 +1,10 @@
-import Chart from '../node_modules/chart.js/auto';
-
 var elapsedTime = 0;
 const TIMENOW = Date.now();
-const TIMESTAMP_FIELD = document.getElementById('SignalGraph');
+const TIMESTAMP_FIELD = document.getElementById('timestamp');
 
 function updateTime() {
     elapsedTime = Date.now() - TIMENOW;
-    TIMESTAMP_FIELD.textContent = formatTimestamp(elapsedTime);
+    TIMESTAMP_FIELD.textContent = 'Elapsed duration: ' + formatTimestamp(elapsedTime);
 }
 
 function formatTimestamp(milliseconds) {
