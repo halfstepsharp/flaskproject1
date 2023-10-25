@@ -1,0 +1,58 @@
+[
+    {
+        "xlabel": 0,
+        "distance_data": 10,
+        "signal_data": 3.5,
+        "q1data": 0,
+        "q2data": 1,
+        "temp": 25
+    },
+    {
+        "xlabel": 1,
+        "distance_data": 20,
+        "signal_data": 3,
+        "q1data": 0,
+        "q2data": 1,
+        "temp": 24
+    },
+    {
+        "xlabel": 2,
+        "distance_data": 18,
+        "signal_data": 2.8,
+        "q1data": 1,
+        "q2data": 1,
+        "temp": 30
+    },
+    {
+        "xlabel": 3,
+        "distance_data": 24,
+        "signal_data": 4,
+        "q1data": 1,
+        "q2data": 0,
+        "temp": 28
+    },
+    {
+        "xlabel": 4,
+        "distance_data": 22,
+        "signal_data": 2.9,
+        "q1data": 0,
+        "q2data": 1,
+        "temp": 29
+    },
+    {
+        "xlabel": 5,
+        "distance_data": 30,
+        "signal_data": 3.5,
+        "q1data": 1,
+        "q2data": 1,
+        "temp": 31
+    },
+    {
+        "xlabel": 6,
+        "distance_data": 31,
+        "signal_data": 3.3,
+        "q1data": 1,
+        "q2data": 0,
+        "temp": 27
+    }
+]
